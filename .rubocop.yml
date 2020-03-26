@@ -1,0 +1,28 @@
+AllCops:
+  Exclude:
+    - 'bin/{rails,rake,bundle}'
+    - 'db/schema.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/spec/**/*.rb"
+    - "**/config/routes.rb"
+    - "**/config/environments/*.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
