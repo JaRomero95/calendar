@@ -18,6 +18,8 @@ require 'simplecov'
 
 SimpleCov.start 'rails'
 
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

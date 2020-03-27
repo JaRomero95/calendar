@@ -5,6 +5,9 @@ class Event < ApplicationRecord
 
   validate :ends_after_it_has_started
 
+  scope :filter_by_start_date_from, ->(value) { where('start_date >= ?', value) }
+  scope :filter_by_start_date_until, ->(value) { where('start_date <= ?', value) }
+
   private
 
   def ends_after_it_has_started

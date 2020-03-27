@@ -3,6 +3,18 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   let(:instance) { build :event }
 
+  it_behaves_like 'filterable model', filter: {start_date_from: Time.zone.now},
+                                      attrs_for_target: {start_date: Time.zone.now},
+                                      attrs_for_unexpected_records: [
+                                        {start_date: 1.minute.ago}
+                                      ]
+
+  it_behaves_like 'filterable model', filter: {start_date_until: Time.zone.now},
+                                      attrs_for_target: {start_date: 1.minute.ago},
+                                      attrs_for_unexpected_records: [
+                                        {start_date: 1.minute.after}
+                                      ]
+
   describe 'Fields' do
     it { should have_db_column(:title).of_type(:string).with_options(limit: 60) }
     it { should have_db_column(:description).of_type(:text) }
