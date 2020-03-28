@@ -6,10 +6,12 @@ const initialState = {
 };
 
 const reducer = createReducer(initialState)({
-  [types.SET_EVENTS]: (state, action) => ({
-    ...state,
-    events: action.payload,
-  }),
+  [types.SET_EVENTS]: (state, action) => {
+    return {
+      ...state,
+      events: action.payload,
+    };
+  },
 });
 
 export default reducer;

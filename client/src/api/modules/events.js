@@ -5,13 +5,13 @@ const eventUrl = '/events';
 
 const index = async ({startDateFrom, startDateUntil}) => {
   const params = {
-    start_date_from: startDateFrom,
-    start_date_until: startDateUntil,
+    'filter[start_date_from]': startDateFrom.toJSON(),
+    'filter[start_date_until]': startDateUntil.toJSON(),
   };
 
   const response = await httpClient.get(eventUrl, {params});
 
-  return response.data;
+  return response.data.data;
 };
 
 export default {

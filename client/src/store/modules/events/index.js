@@ -1,11 +1,11 @@
 import reducer from './reducers';
 
 import sagas from './sagas';
-import * as selectors from './selectors';
+import * as eventSelectors from './selectors';
 
 export {
   sagas,
-  selectors,
+  eventSelectors,
 };
 
 export default reducer;

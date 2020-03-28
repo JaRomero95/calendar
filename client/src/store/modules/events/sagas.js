@@ -1,6 +1,13 @@
-import {all, takeLatest} from 'redux-saga/effects';
+import {
+  all,
+  call,
+  dispatch,
+  put,
+  takeLatest,
+} from 'redux-saga/effects';
 import API from 'api';
 import * as types from './types';
+import * as actions from './actions';
 
 // export default function* onFetchRecords() {
 //   yield takeLatest('RECORDS/FETCH', function fetchRecords() {
@@ -20,9 +27,9 @@ function* onFetchEvents() {
   yield takeLatest(types.FETCH_EVENTS, fetchEvents);
 }
 
-function* fetchEvents() {
-  const events = yield API.events.index({});
-  console.log('events :', events);
+function* fetchEvents(action) {
+  const events = yield call(API.events.index, action.payload);
+  yield put(actions.setEvents(events));
 }
 
 export default function* rootSaga() {
