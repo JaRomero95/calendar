@@ -19,3 +19,13 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  client:
+    stdin_open: true
+    build:
+      context: ./client/
+    command: yarn start
+    volumes:
+      - ./client:/app
+      - ./client/node_modules:/app/node_modules
+    ports:
+      - "8000:3000"
