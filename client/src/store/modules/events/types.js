@@ -1,0 +1,7 @@
+const SET_EVENTS = 'SET_EVENTS';
+const FETCH_EVENTS = 'FETCH_EVENTS';
+
+export {
+  SET_EVENTS,
+  FETCH_EVENTS,
+};

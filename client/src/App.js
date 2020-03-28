@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Calendar, momentLocalizer} from 'react-big-calendar';
+import moment from 'moment';
+import {fetchEvents} from 'store/modules/events/actions';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const localizer = momentLocalizer(moment);
+
+class App extends Component {
+  componentDidMount() {
+    const {fetchEvents} = this.props;
+    fetchEvents({});
+    console.log('process.env :', process.env);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Calendar
+          localizer={localizer}
+          events={[]}
+          startAccessor="start"
+          endAccessor="end"
+          style={{height: 500}}
+        />
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  fetchEvents: params => {
+    dispatch(fetchEvents(params));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(App);
