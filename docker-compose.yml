@@ -15,8 +15,10 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      CLIENT_BASE_URL: ${CLIENT_BASE_URL}
+      CLIENT_PORT: ${CLIENT_PORT}
     ports:
-      - "3000:3000"
+      - "${API_PORT}:3000"
     depends_on:
       - db
   client:
@@ -27,5 +29,8 @@ services:
     volumes:
       - ./client:/app
       - ./client/node_modules:/app/node_modules
+    environment: 
+      REACT_APP_API_BASE_URL: ${API_BASE_URL}
+      REACT_APP_API_PORT: ${API_PORT}
     ports:
-      - "8000:3000"
+      - "${CLIENT_PORT}:3000"
