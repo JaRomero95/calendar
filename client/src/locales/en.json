@@ -1,0 +1,15 @@
+{
+  "general.loading": "Loading...",
+  "general.close": "Close",
+  "general.create": "Create",
+  "general.save": "Save",
+  "general.edit": "Edit",
+  "general.cancel": "Cancel",
+
+  "event.show": "Show event",
+  "event.edit": "Edit event",
+  "event.fields.title": "Title",
+  "event.fields.description": "Description",
+  "event.fields.start_date": "Start date",
+  "event.fields.end_date": "End date"
+}

@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
-import AppCalendar from 'components/AppCalendar';
+import Loading from 'components/general/AppLoading';
+import EventsPage from 'components/events/EventsPage';
 
 class App extends Component {
   render() {
-    return <AppCalendar />;
+    return (
+      <div>
+        <Loading />
+        <EventsPage />
+      </div>
+    );
   }
 }
 

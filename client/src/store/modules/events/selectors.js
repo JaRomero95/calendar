@@ -1,7 +1,12 @@
-import moment from 'moment';
 import {createSelector} from 'reselect';
 
 const getEvents = state => state.events.events;
+
+const getEventErrors = state => state.events.eventErrors;
+
+const getShowCreateEventModal = state => state.events.showCreateEventModal;
+
+const getShowEventModal = state => state.events.showEventModal;
 
 const getFormattedEvents = createSelector(
   [getEvents],
@@ -9,11 +14,14 @@ const getFormattedEvents = createSelector(
     title: event.title,
     start: new Date(event.start_date),
     end: new Date(event.end_date),
+    resource: event,
   })),
 );
 
-
 export {
   getEvents,
+  getEventErrors,
+  getShowEventModal,
+  getShowCreateEventModal,
   getFormattedEvents,
 };

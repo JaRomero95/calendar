@@ -2,14 +2,7 @@ class EventsController < ApplicationController
   before_action :find_event, only: %i[show update destroy]
 
   def index
-    puts "======>"
-    puts params.inspect
-    puts "2"
-    puts params.fetch(:filter, {})
-    puts "3"
-    puts params.fetch(:filter, {}).class.name
-    puts "======>"
-    @events = Event.filter(filter_params)
+    @events = Event.all
 
     render_index @events
   end

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {fetchEvents} from 'store/modules/events/actions';
 import {eventSelectors} from 'store/modules/events';
 import {eventsType} from 'types/events';
+import dateRangeCalculator from 'lib/dateRangeCalculator';
 
 const localizer = momentLocalizer(moment);
 
@@ -16,10 +17,30 @@ class AppCalendar extends Component {
     this.state = {
       startDateFrom: moment().startOf('month'),
       startDateUntil: moment().endOf('month'),
+      type: 'month',
     };
+
+    this.onRangeChange = this.onRangeChange.bind(this);
+    this.loadEvents = this.loadEvents.bind(this);
   }
 
   componentDidMount() {
+    this.loadEvents();
+  }
+
+  onRangeChange(range, newType) {
+    const type = newType || this.state.type;
+    const calculatedRange = dateRangeCalculator[type](range);
+
+    this.setState({
+      type,
+      ...calculatedRange,
+    });
+
+    this.loadEvents();
+  }
+
+  loadEvents() {
     const {
       props: {fetchEvents},
       state: {
@@ -29,24 +50,15 @@ class AppCalendar extends Component {
     } = this;
 
     fetchEvents({startDateFrom, startDateUntil});
-
-    this.onRangeChange = this.onRangeChange.bind(this);
-  }
-
-  onRangeChange({start, end}) {
-    this.setState({
-      startDateFrom: start,
-      startDateUntil: end,
-    });
   }
 
   render() {
     const {
       onRangeChange,
-      onNavigate,
-      onViewcontrols,
-      onDrillDown,
-      props: {events},
+      props: {
+        events,
+        onSelectEvent,
+      },
     } = this;
 
     return (
@@ -57,6 +69,7 @@ class AppCalendar extends Component {
           startAccessor="start"
           endAccessor="end"
           onRangeChange={onRangeChange}
+          onSelectEvent={onSelectEvent}
           style={{height: 500}}
         />
       </div>
@@ -67,6 +80,7 @@ class AppCalendar extends Component {
 AppCalendar.propTypes = {
   events: eventsType.isRequired,
   fetchEvents: PropTypes.func.isRequired,
+  onSelectEvent: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
