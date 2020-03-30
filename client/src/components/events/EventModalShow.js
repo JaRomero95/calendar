@@ -12,12 +12,11 @@ class EventModalShow extends Component {
       event,
       handleClose,
       setEdit,
+      onDelete,
     } = this.props;
 
-    if (!event) { return null; }
-
     return (
-      <div>
+      <>
         <Modal.Header closeButton>
           <Modal.Title>
             <FormattedMessage id="event.show" />
@@ -51,6 +50,14 @@ class EventModalShow extends Component {
               <FormattedTime value={event.end_date} />
             </p>
           </div>
+
+          <Button
+            onClick={onDelete}
+            variant="outline-danger"
+            size="sm"
+          >
+            <FormattedMessage id="general.delete" />
+          </Button>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => setEdit(true)}>
@@ -60,7 +67,7 @@ class EventModalShow extends Component {
             <FormattedMessage id="general.close" />
           </Button>
         </Modal.Footer>
-      </div>
+      </>
     );
   }
 }
@@ -69,6 +76,7 @@ EventModalShow.propTypes = {
   event: eventType.isRequired,
   handleClose: PropTypes.func.isRequired,
   setEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default EventModalShow;

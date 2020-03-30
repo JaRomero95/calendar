@@ -21,6 +21,10 @@ const reducer = createReducer(initialState)({
     ...state,
     events: [...state.events, payload],
   }),
+  [types.REMOVE_EVENT]: (state, {payload}) => ({
+    ...state,
+    events: state.events.filter(event => event.id !== payload.id),
+  }),
   [types.SET_CREATE_EVENT_MODAL]: (state, {payload}) => ({
     ...state,
     showCreateEventModal: payload,

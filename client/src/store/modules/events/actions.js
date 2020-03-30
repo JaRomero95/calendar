@@ -15,6 +15,16 @@ const createEvent = event => ({
   payload: event,
 });
 
+const destroyEvent = event => ({
+  type: types.DESTROY_EVENT,
+  payload: event,
+});
+
+const removeEvent = event => ({
+  type: types.REMOVE_EVENT,
+  payload: event,
+});
+
 const setEvents = events => ({
   type: types.SET_EVENTS,
   payload: events,
@@ -49,6 +59,8 @@ export {
   fetchEvents,
   updateEvent,
   createEvent,
+  destroyEvent,
+  removeEvent,
   setEvents,
   setEvent,
   addEvent,

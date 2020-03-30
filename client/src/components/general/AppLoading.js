@@ -7,7 +7,7 @@ import {FormattedMessage} from 'react-intl';
 import AppSpinner from './AppSpinner';
 
 const LoaderWrapper = styled.div`
-  z-index: 999;
+  z-index: 1100;
   background-color: rgba(255, 255, 255, 0.8);
   color: #7C73E6;
   position: fixed;

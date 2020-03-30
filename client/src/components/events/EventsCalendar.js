@@ -62,17 +62,19 @@ class AppCalendar extends Component {
     } = this;
 
     return (
-      <div className="App">
-        <Calendar
-          localizer={localizer}
-          events={events}
-          startAccessor="start"
-          endAccessor="end"
-          onRangeChange={onRangeChange}
-          onSelectEvent={onSelectEvent}
-          style={{height: 500}}
-        />
-      </div>
+      <Calendar
+        localizer={localizer}
+        events={events}
+        startAccessor="start"
+        endAccessor="end"
+        onRangeChange={onRangeChange}
+        onSelectEvent={onSelectEvent}
+        style={{
+          width: '100%',
+          // minHeight: '100%',
+          // height: '500px',
+        }}
+      />
     );
   }
 }

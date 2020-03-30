@@ -27,5 +27,14 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "no-use-before-define": ["error", { "functions": false }],
     "react/prefer-stateless-function": "off",
+    "react/sort-comp": [1, {
+      order: [
+        'static-methods',
+        'lifecycle',
+        '/^on.+$/',
+        'everything-else',
+        'render',
+      ]
+    }]
   },
 };

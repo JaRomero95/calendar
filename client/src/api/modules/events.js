@@ -14,13 +14,18 @@ const index = async ({startDateFrom, startDateUntil}) => {
   return response.data.data;
 };
 
+// FIXME: to much repeated core with create
 const update = async event => {
   try {
     const response = await httpClient.put(eventUrl(event.id), {data: event});
 
     return [response.data.data, null];
   } catch (error) {
-    return [null, error.response.data.errors];
+    if (error.response) {
+      return [null, error.response.data.errors];
+    }
+
+    throw error;
   }
 };
 
@@ -30,12 +35,21 @@ const create = async event => {
 
     return [response.data.data, null];
   } catch (error) {
-    return [null, error.response.data.errors];
+    if (error.response) {
+      return [null, error.response.data.errors];
+    }
+
+    throw error;
   }
+};
+
+const destroy = eventId => {
+  httpClient.delete(eventUrl(eventId));
 };
 
 export default {
   index,
   update,
   create,
+  destroy,
 };

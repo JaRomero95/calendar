@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {IntlProvider} from 'react-intl';
-import messages from 'locales/en.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'flatpickr/dist/themes/light.css';
+import {RawIntlProvider} from 'react-intl';
+import intl from 'i18n/intl';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -15,11 +15,11 @@ const rootElement = document.getElementById('root');
 // TODO: <React.StrictMode></React.StrictMode>
 
 ReactDOM.render(
-  <IntlProvider locale="en" messages={messages}>
+  <RawIntlProvider value={intl}>
     <Provider store={store}>
       <App />
     </Provider>
-  </IntlProvider>,
+  </RawIntlProvider>,
   rootElement,
 );
 

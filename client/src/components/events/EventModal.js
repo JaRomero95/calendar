@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import {FormattedMessage} from 'react-intl';
 import {eventType} from 'types/events';
 import EventModalShow from './EventModalShow';
 import EventModalEdit from './EventModalEdit';
+import EventModalDestroy from './EventModalDestroy';
 
 class EventModal extends Component {
   constructor(props) {
@@ -11,14 +14,20 @@ class EventModal extends Component {
 
     this.state = {
       edit: false,
+      destroy: false,
     };
 
     this.setEdit = this.setEdit.bind(this);
+    this.setDelete = this.setDelete.bind(this);
     this.getModalComponent = this.getModalComponent.bind(this);
   }
 
   setEdit(value) {
     this.setState({edit: value});
+  }
+
+  setDelete(value) {
+    this.setState({destroy: value});
   }
 
   getModalComponent() {
@@ -33,26 +42,40 @@ class EventModal extends Component {
     const {
       getModalComponent,
       setEdit,
+      setDelete,
       props: {
         event,
         handleClose,
       },
+      state: {
+        destroy,
+      },
     } = this;
-
-    if (!event) { return null; }
 
     const ModalComponent = getModalComponent();
 
     return (
       <Modal
-        show
         onHide={handleClose}
+        centered
+        show
       >
-        <ModalComponent
-          event={event}
-          handleClose={handleClose}
-          setEdit={setEdit}
-        />
+        {
+          destroy ? (
+            <EventModalDestroy
+              event={event}
+              handleClose={() => setDelete(false)}
+            />
+          ) : (
+            <ModalComponent
+              event={event}
+              handleClose={handleClose}
+              setEdit={setEdit}
+              onDelete={() => setDelete(true)}
+            />
+          )
+
+        }
       </Modal>
     );
   }

@@ -5,9 +5,18 @@
   "general.save": "Save",
   "general.edit": "Edit",
   "general.cancel": "Cancel",
+  "general.delete": "Delete",
+
+  "general.errors.blank": "Can't be blank",
+  "general.errors.tooLong": "Is too long (maximum is {value} characters)",
+  "general.errors.endDateLessThanStartDate": "End date must be greater than start date",
 
   "event.show": "Show event",
   "event.edit": "Edit event",
+  "event.create": "Create event",
+  "event.delete": "Delete event",
+  "event.confirmDelete": "Do you really want to delete the event?",
+
   "event.fields.title": "Title",
   "event.fields.description": "Description",
   "event.fields.start_date": "Start date",

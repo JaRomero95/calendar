@@ -42,6 +42,23 @@ function* updateEvent(action) {
   yield put(generalActions.setLoading(false));
 }
 
+function* onDestroyEvent() {
+  yield takeLatest(types.DESTROY_EVENT, destroyEvent);
+}
+
+function* destroyEvent(action) {
+  const event = action.payload;
+
+  yield put(generalActions.setLoading(true));
+
+  yield call(API.events.destroy, event.id);
+
+  yield put(actions.removeEvent(event));
+  yield put(actions.setEventModal(false));
+
+  yield put(generalActions.setLoading(false));
+}
+
 function* onCreateEvent() {
   yield takeLatest(types.CREATE_EVENT, createEvent);
 }
@@ -55,6 +72,7 @@ function* createEvent(action) {
   if (errors) {
     yield put(actions.setEventErrors(errors));
   } else {
+    // FIXME: notificación se ha guardado con éxito
     yield put(actions.addEvent(event));
     yield put(actions.setCreateEventModal(false));
   }
@@ -67,5 +85,6 @@ export default function* rootSaga() {
     onFetchEvents(),
     onUpdateEvent(),
     onCreateEvent(),
+    onDestroyEvent(),
   ]);
 }
