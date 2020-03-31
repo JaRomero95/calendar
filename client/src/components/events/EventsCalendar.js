@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import {fetchEvents} from 'store/modules/events/actions';
 import {eventSelectors} from 'store/modules/events';
 import {eventsType} from 'types/events';
 import dateRangeCalculator from 'lib/dateRangeCalculator';
+import AppCalendar from 'components/general/AppCalendar';
 
-const localizer = momentLocalizer(moment);
-
-class AppCalendar extends Component {
+class EventsCalendar extends Component {
   constructor(props) {
     super(props);
 
@@ -62,24 +60,18 @@ class AppCalendar extends Component {
     } = this;
 
     return (
-      <Calendar
-        localizer={localizer}
+      <AppCalendar
         events={events}
         startAccessor="start"
         endAccessor="end"
         onRangeChange={onRangeChange}
         onSelectEvent={onSelectEvent}
-        style={{
-          width: '100%',
-          // minHeight: '100%',
-          // height: '500px',
-        }}
       />
     );
   }
 }
 
-AppCalendar.propTypes = {
+EventsCalendar.propTypes = {
   events: eventsType.isRequired,
   fetchEvents: PropTypes.func.isRequired,
   onSelectEvent: PropTypes.func.isRequired,
@@ -95,4 +87,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppCalendar);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsCalendar);

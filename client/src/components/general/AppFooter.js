@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 const Footer = styled.div`
   padding: 1rem;
+  text-align: center;
 `;
 
 const AppFooter = () => (
   <Footer>
-    Juan Antonio Romero Molero
+    <span>Juan Antonio Romero Molero</span>
+    <span>Factorial Calendar</span>
   </Footer>
 );
 

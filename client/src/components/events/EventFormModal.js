@@ -11,6 +11,7 @@ import {eventType} from 'types/events';
 import {getEventErrors} from 'store/modules/events/selectors';
 import {setEventErrors} from 'store/modules/events/actions';
 import AppFormError from 'components/general/AppFormError';
+import AppForceSubmit from 'components/general/AppForceSubmit';
 import eventValidator from 'lib/eventValidator';
 
 class EventFormModal extends Component {
@@ -191,11 +192,13 @@ class EventFormModal extends Component {
 
               <AppFormError>{errors.end_date}</AppFormError>
             </Form.Group>
+
+            <AppForceSubmit />
           </Form>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="success" onClick={onSubmit}>
+          <Button variant="primary" onClick={onSubmit}>
             {confirmButtonText}
           </Button>
 

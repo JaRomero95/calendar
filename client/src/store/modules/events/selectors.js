@@ -14,6 +14,7 @@ const getFormattedEvents = createSelector(
     title: event.title,
     start: new Date(event.start_date),
     end: new Date(event.end_date),
+    allDay: false,
     resource: event,
   })),
 );

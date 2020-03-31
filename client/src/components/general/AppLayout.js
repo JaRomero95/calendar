@@ -17,7 +17,11 @@ const Main = styled.div`
   padding: 1rem 0 0;
 
   @media (min-width: 500px) {
-    padding: 2rem 2rem 0;
+    padding: 1rem 2rem 0;
+
+    & > div {
+      width: 100%
+    }
   }
 `;
 
