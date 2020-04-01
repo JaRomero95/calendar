@@ -44,6 +44,8 @@ group :test do
   gem 'database_cleaner-active_record'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'capybara'
+  gem 'webdrivers', require: 'webdrivers/chromedriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

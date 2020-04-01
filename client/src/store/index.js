@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import {
   applyMiddleware,
   createStore,
@@ -14,16 +15,16 @@ const rootReducer = combineReducers(reducers);
 
 const initialState = {};
 
-const middlewares = compose(
-  applyMiddleware(sagaMiddleware),
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const middlewares = [applyMiddleware(sagaMiddleware)];
+
+if (window && window.__REDUX_DEVTOOLS_EXTENSION__) {
+  middlewares.push(window.__REDUX_DEVTOOLS_EXTENSION__());
+}
 
 const store = createStore(
   rootReducer,
   initialState,
-  middlewares,
+  compose(...middlewares),
 );
 
 sagaMiddleware.run(rootSaga);
