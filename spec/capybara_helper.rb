@@ -3,6 +3,10 @@ RSpec.configure do |config|
 
   require 'capybara/rspec'
 
+  include RSpec::Longrun::DSL
+
+  config.default_formatter = RSpec::Longrun::Formatter
+
   config.before :suite do
     port = 3333
 
@@ -25,8 +29,6 @@ RSpec.configure do |config|
 
   config.before :each, type: :feature do |example|
     Capybara.current_driver = example.metadata[:driver] || :chrome_headless
-
-    visit '/'
   end
 
   config.after :each, js: true do
@@ -60,4 +62,23 @@ RSpec.configure do |config|
 
   Capybara.javascript_driver = :chrome
   Capybara.server = :puma, {Silent: true}
+
+  config.before :suite do
+    FileUtils.rm_rf(capybara_errors_dir)
+  end
+
+  config.after :each, type: :feature do |example|
+    next unless example.exception
+
+    description = example.metadata[:full_description].gsub(/\s+/, '_').downcase
+    page.save_screenshot "#{capybara_errors_dir}/error_#{description}.png"
+  end
+
+  def capybara_errors_dir
+    dir = Rails.root.join 'tmp', 'capybara', 'errors'
+
+    FileUtils.mkdir_p(dir) unless File.directory?(dir)
+
+    dir
+  end
 end

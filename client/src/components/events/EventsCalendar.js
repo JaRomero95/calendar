@@ -33,9 +33,7 @@ class EventsCalendar extends Component {
     this.setState({
       type,
       ...calculatedRange,
-    });
-
-    this.loadEvents();
+    }, this.loadEvents);
   }
 
   loadEvents() {

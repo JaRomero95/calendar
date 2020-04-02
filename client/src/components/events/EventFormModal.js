@@ -171,6 +171,7 @@ class EventFormModal extends Component {
                   value={event.start_date}
                   options={{enableTime: true}}
                   onChange={date => changeDate('start_date', date)}
+                  name="start_date"
                 />
               </div>
 
@@ -187,6 +188,7 @@ class EventFormModal extends Component {
                   value={event.end_date}
                   options={{enableTime: true}}
                   onChange={date => changeDate('end_date', date)}
+                  name="end_date"
                 />
               </div>
 
