@@ -82,12 +82,10 @@ class EventModal extends Component {
 }
 
 EventModal.propTypes = {
-  event: eventType,
+  event: eventType.isRequired,
   handleClose: PropTypes.func.isRequired,
 };
 
-EventModal.defaultProps = {
-  event: null,
-};
+export {EventModal};
 
 export default EventModal;

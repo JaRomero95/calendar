@@ -34,4 +34,6 @@ const AppLayout = ({children}) => (
   </Wrapper>
 );
 
+export {AppLayout};
+
 export default AppLayout;

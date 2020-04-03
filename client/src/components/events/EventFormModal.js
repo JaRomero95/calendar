@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import PropTypes from 'prop-types';
-import Flatpickr from 'react-flatpickr';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
+import Flatpickr from 'react-flatpickr';
 import moment from 'moment';
 import {injectIntl, FormattedMessage} from 'react-intl';
 import {eventType} from 'types/events';
@@ -142,7 +142,7 @@ class EventFormModal extends Component {
                 type="text"
               />
 
-              <AppFormError>{errors.title}</AppFormError>
+              <AppFormError data-test="title">{errors.title}</AppFormError>
             </Form.Group>
 
             <Form.Group>
@@ -158,7 +158,7 @@ class EventFormModal extends Component {
                 name="description"
               />
 
-              <AppFormError>{errors.description}</AppFormError>
+              <AppFormError data-test="description">{errors.description}</AppFormError>
             </Form.Group>
 
             <Form.Group>
@@ -175,7 +175,7 @@ class EventFormModal extends Component {
                 />
               </div>
 
-              <AppFormError>{errors.start_date}</AppFormError>
+              <AppFormError data-test="start_date">{errors.start_date}</AppFormError>
             </Form.Group>
 
             <Form.Group>
@@ -192,7 +192,7 @@ class EventFormModal extends Component {
                 />
               </div>
 
-              <AppFormError>{errors.end_date}</AppFormError>
+              <AppFormError data-test="end_date">{errors.end_date}</AppFormError>
             </Form.Group>
 
             <AppForceSubmit />
@@ -229,6 +229,8 @@ EventFormModal.defaultProps = {
   event: null,
 };
 
+EventFormModal.displayName = 'EventFormModal';
+
 
 const mapStateToProps = (state, props) => ({
   errors: getEventErrors(state, props),
@@ -237,5 +239,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = dispatch => ({
   setEventErrors: errors => dispatch(setEventErrors(errors)),
 });
+
+export {EventFormModal};
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(EventFormModal));

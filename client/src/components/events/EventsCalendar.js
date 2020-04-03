@@ -85,4 +85,6 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
+export {EventsCalendar};
+
 export default connect(mapStateToProps, mapDispatchToProps)(EventsCalendar);

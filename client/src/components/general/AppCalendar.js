@@ -35,4 +35,6 @@ const AppCalendar = props => (
   />
 );
 
+export {AppCalendar};
+
 export default AppCalendar;

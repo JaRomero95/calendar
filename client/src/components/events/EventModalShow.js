@@ -79,4 +79,6 @@ EventModalShow.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
+export {EventModalShow};
+
 export default EventModalShow;

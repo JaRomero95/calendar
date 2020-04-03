@@ -99,4 +99,6 @@ const mapDispatchToProps = dispatch => ({
   setCreateEventModal: value => dispatch(setCreateEventModal(value)),
 });
 
+export {EventsPage};
+
 export default connect(mapStateToProps, mapDispatchToProps)(EventsPage);

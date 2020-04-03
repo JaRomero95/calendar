@@ -13,4 +13,6 @@ const AppCircleButton = styled(Button)`
   border-radius: 25px;
 `;
 
+export {AppCircleButton};
+
 export default AppCircleButton;

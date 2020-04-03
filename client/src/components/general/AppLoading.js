@@ -54,4 +54,6 @@ const mapStateToProps = (state, props) => ({
   isLoading: generalSelectors.isLoading(state, props),
 });
 
+export {AppLoading};
+
 export default connect(mapStateToProps, null)(AppLoading);

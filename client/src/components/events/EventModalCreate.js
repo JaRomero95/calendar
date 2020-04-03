@@ -44,4 +44,6 @@ const mapDispatchToProps = dispatch => ({
   createEvent: event => dispatch(createEvent(event)),
 });
 
+export {EventModalCreate};
+
 export default connect(null, mapDispatchToProps)(injectIntl(EventModalCreate));

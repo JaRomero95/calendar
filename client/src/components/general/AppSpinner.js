@@ -51,4 +51,6 @@ const AppSpinner = () => (
   </SpinnerWrapper>
 );
 
+export {AppSpinner};
+
 export default AppSpinner;

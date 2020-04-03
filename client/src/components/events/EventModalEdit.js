@@ -41,4 +41,6 @@ const mapDispatchToProps = dispatch => ({
   updateEvent: event => dispatch(updateEvent(event)),
 });
 
+export {EventModalEdit};
+
 export default connect(null, mapDispatchToProps)(injectIntl(EventModalEdit));

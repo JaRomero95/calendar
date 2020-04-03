@@ -51,4 +51,6 @@ const mapDispatchToProps = dispatch => ({
   destroyEvent: event => dispatch(destroyEvent(event)),
 });
 
+export {EventModalDestroy};
+
 export default connect(null, mapDispatchToProps)(EventModalDestroy);

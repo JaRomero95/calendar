@@ -15,4 +15,6 @@ const AppFormError = ({children}) => (
   </FormText>
 );
 
+export {AppFormError};
+
 export default AppFormError;

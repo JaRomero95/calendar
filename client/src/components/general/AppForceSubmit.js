@@ -12,4 +12,6 @@ const AppForceSubmit = () => (
   />
 );
 
+export {AppForceSubmit};
+
 export default AppForceSubmit;
