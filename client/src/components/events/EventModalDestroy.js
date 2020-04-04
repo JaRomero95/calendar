@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import {FormattedMessage} from 'react-intl';
 import {eventType} from 'types/events';
 import {destroyEvent} from 'store/modules/events/actions';
-
-import Button from 'react-bootstrap/Button';
 
 class EventModalDestroy extends Component {
   render() {

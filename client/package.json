@@ -53,6 +53,12 @@
     "eslint-plugin-react": "^7.19.0"
   },
   "jest": {
-    "coverageReporters": ["json", "lcov", "clover"]
+    "coverageReporters": ["json", "lcov", "clover"],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/spec/components/**",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   }
 }

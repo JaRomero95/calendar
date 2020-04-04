@@ -13,8 +13,6 @@ class EventsPage extends Component {
     super(props);
 
     this.state = {
-      showEventModal: false,
-      showCreateEventModal: false,
       event: null,
     };
 
@@ -35,8 +33,8 @@ class EventsPage extends Component {
   }
 
   closeShowEventModal() {
-    this.setState({event: null});
     this.props.setEventModal(false);
+    this.setState({event: null});
   }
 
   openCreateEventModal() {
@@ -87,6 +85,8 @@ class EventsPage extends Component {
 EventsPage.propTypes = {
   setEventModal: PropTypes.func.isRequired,
   setCreateEventModal: PropTypes.func.isRequired,
+  showEventModal: PropTypes.bool.isRequired,
+  showCreateEventModal: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({

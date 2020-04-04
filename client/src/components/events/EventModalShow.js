@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import PropTypes from 'prop-types';
 import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
 import {eventType} from 'types/events';
+import AppFormattedDateTime from 'components/general/AppFormattedDateTime';
 
 import Button from 'react-bootstrap/Button';
 
@@ -35,20 +36,12 @@ class EventModalShow extends Component {
 
           <div>
             <h5><FormattedMessage id="event.fields.start_date" /></h5>
-            <p>
-              <FormattedDate value={event.start_date} />
-              &nbsp;
-              <FormattedTime value={event.start_date} />
-            </p>
+            <AppFormattedDateTime date={event.start_date} />
           </div>
 
           <div>
             <h5><FormattedMessage id="event.fields.end_date" /></h5>
-            <p>
-              <FormattedDate value={event.end_date} />
-              &nbsp;
-              <FormattedTime value={event.end_date} />
-            </p>
+            <AppFormattedDateTime date={event.end_date} />
           </div>
 
           <Button
