@@ -6,7 +6,7 @@ import {RawIntlProvider} from 'react-intl';
 import intl from 'i18n/intl';
 import 'i18n/initDate';
 import './styles/index.scss';
-import App from './App';
+import App from 'components/general/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
 
