@@ -217,7 +217,7 @@ EventFormModal.propTypes = {
   event: eventType,
   onSubmit: PropTypes.func.isRequired,
   setEventErrors: PropTypes.func.isRequired,
-  intl: PropTypes.any.isRequired, // FIXME: en algunos lugares en any y en otros object
+  intl: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   modalTitle: PropTypes.string.isRequired,
   confirmButtonText: PropTypes.string.isRequired,

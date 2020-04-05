@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import AppFooter from './AppFooter';
+import AppToast from './AppToast';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -31,6 +32,7 @@ const AppLayout = ({children}) => (
       {children}
     </Main>
     <AppFooter />
+    <AppToast />
   </Wrapper>
 );
 

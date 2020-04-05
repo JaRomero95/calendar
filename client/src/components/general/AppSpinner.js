@@ -17,7 +17,6 @@ const SpinnerWrapper = styled.div`
   }
 `;
 
-// FIXME: import colors from another file
 const SpinnerContent = styled.div`
   box-sizing: border-box;
   display: block;

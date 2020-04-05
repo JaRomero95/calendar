@@ -5,6 +5,7 @@ import {
   takeLatest,
 } from 'redux-saga/effects';
 import API from 'api';
+import intl from 'i18n/intl';
 import * as types from './types';
 import * as actions from './actions';
 import * as generalActions from '../general/actions';
@@ -37,6 +38,7 @@ function* updateEvent(action) {
   } else {
     yield put(actions.setEvent(event));
     yield put(actions.setEventModal(false));
+    yield put(generalActions.setToast(intl.formatMessage({id: 'general.edit.success'})));
   }
 
   yield put(generalActions.setLoading(false));
@@ -55,6 +57,7 @@ function* destroyEvent(action) {
 
   yield put(actions.removeEvent(event));
   yield put(actions.setEventModal(false));
+  yield put(generalActions.setToast(intl.formatMessage({id: 'general.delete.success'})));
 
   yield put(generalActions.setLoading(false));
 }
@@ -72,9 +75,9 @@ function* createEvent(action) {
   if (errors) {
     yield put(actions.setEventErrors(errors));
   } else {
-    // FIXME: notificación se ha guardado con éxito
     yield put(actions.addEvent(event));
     yield put(actions.setCreateEventModal(false));
+    yield put(generalActions.setToast(intl.formatMessage({id: 'general.create.success'})));
   }
 
   yield put(generalActions.setLoading(false));

@@ -37,7 +37,7 @@ class EventModalCreate extends Component {
 EventModalCreate.propTypes = {
   handleClose: PropTypes.func.isRequired,
   createEvent: PropTypes.func.isRequired,
-  intl: PropTypes.any.isRequired,
+  intl: PropTypes.object.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

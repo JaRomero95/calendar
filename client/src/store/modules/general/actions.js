@@ -5,6 +5,13 @@ const setLoading = value => ({
   value,
 });
 
+const setToast = message => ({
+  type: types.SET_TOAST,
+  message,
+  setAt: new Date().getTime(),
+});
+
 export {
+  setToast,
   setLoading,
 };

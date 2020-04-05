@@ -28,6 +28,7 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "no-use-before-define": ["error", { "functions": false }],
     "react/prefer-stateless-function": "off",
+    "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/sort-comp": [1, {
       order: [

@@ -2,6 +2,7 @@ import {expectSaga} from 'redux-saga-test-plan';
 import * as matchers from 'redux-saga-test-plan/matchers';
 import * as generalTypes from 'store/modules/general/types';
 import * as actions from 'store/modules/events/actions';
+import * as generalActions from 'store/modules/general/actions';
 import saga from 'store/modules/events/sagas';
 import API from 'api';
 
@@ -63,6 +64,10 @@ describe('Events sagas', () => {
           .silentRun();
       });
 
+      it('put toast', () => {
+        return expectSagaToast(sagaAction, 'Successfully saved');
+      });
+
       it('put loading in correct order', async () => {
         expectHandleLoadingState(sagaAction);
       });
@@ -93,6 +98,10 @@ describe('Events sagas', () => {
         return sagaAction
           .not.put(actions.setEventModal(false))
           .silentRun();
+      });
+
+      it('put toast', () => {
+        return expectSagaToast(sagaAction, 'Successfully saved', false);
       });
 
       it('put loading in correct order', async () => {
@@ -134,6 +143,10 @@ describe('Events sagas', () => {
           .silentRun();
       });
 
+      it('put toast', () => {
+        return expectSagaToast(sagaAction, 'Successfully created');
+      });
+
       it('put loading in correct order', async () => {
         expectHandleLoadingState(sagaAction);
       });
@@ -166,6 +179,10 @@ describe('Events sagas', () => {
           .silentRun();
       });
 
+      it('put toast', () => {
+        return expectSagaToast(sagaAction, 'Successfully created', false);
+      });
+
       it('put loading in correct order', async () => {
         expectHandleLoadingState(sagaAction);
       });
@@ -195,6 +212,10 @@ describe('Events sagas', () => {
         .silentRun();
     });
 
+    it('put toast', () => {
+      return expectSagaToast(sagaAction, 'Successfully deleted');
+    });
+
     it('put loading in correct order', async () => {
       expectHandleLoadingState(sagaAction);
     });
@@ -218,4 +239,15 @@ function findActionIndex(effects, type, value) {
 
     return action.type === type && action.value === value;
   });
+}
+
+function expectSagaToast(sagaAction, message, expected = true) {
+  const expectedAction = generalActions.setToast(message);
+  delete expectedAction.setAt;
+
+  const completedSaga = expected ? sagaAction : sagaAction.not;
+
+  return completedSaga
+    .put.like({action: expectedAction})
+    .silentRun();
 }

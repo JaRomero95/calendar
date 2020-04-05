@@ -2,10 +2,13 @@
   "general.loading": "Loading...",
   "general.close": "Close",
   "general.create": "Create",
+  "general.create.success": "Successfully created",
   "general.save": "Save",
   "general.edit": "Edit",
+  "general.edit.success": "Successfully saved",
   "general.cancel": "Cancel",
   "general.delete": "Delete",
+  "general.delete.success": "Successfully deleted",
 
   "general.errors.blank": "Can't be blank",
   "general.errors.tooLong": "Is too long (maximum is {value} characters)",

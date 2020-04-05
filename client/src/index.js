@@ -12,8 +12,6 @@ import store from './store';
 
 const rootElement = document.getElementById('root');
 
-// TODO: <React.StrictMode></React.StrictMode>
-
 ReactDOM.render(
   <RawIntlProvider value={intl}>
     <Provider store={store}>

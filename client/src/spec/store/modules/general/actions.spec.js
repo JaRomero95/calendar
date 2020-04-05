@@ -10,4 +10,16 @@ describe('General actions', () => {
 
     expect(actions.setLoading(true)).toEqual(expectedAction);
   });
+
+  it('setToast', () => {
+    const message = 'test toast';
+
+    const expectedAction = {
+      type: types.SET_TOAST,
+      message,
+      setAt: expect.any(Number),
+    };
+
+    expect(actions.setToast(message)).toEqual(expectedAction);
+  });
 });
