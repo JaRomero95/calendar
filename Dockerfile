@@ -12,11 +12,6 @@ RUN unzip chromedriver_linux64.zip
 RUN mv chromedriver /usr/bin/chromedriver
 RUN chmod +x /usr/bin/chromedriver
 
-# RUN mkdir /client
-# WORKDIR /client
-# RUN yarn install
-# WORKDIR /
-
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
