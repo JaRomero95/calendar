@@ -14,10 +14,17 @@ const index = async ({startDateFrom, startDateUntil}) => {
   return response.data.data;
 };
 
-// FIXME: to much repeated core with create
-const update = async event => {
+const update = event => handleRequestWithPayload('put', eventUrl(event.id), event);
+
+const create = event => handleRequestWithPayload('post', eventsUrl, event);
+
+const destroy = async eventId => {
+  await httpClient.delete(eventUrl(eventId));
+};
+
+async function handleRequestWithPayload(httpMethod, url, data) {
   try {
-    const response = await httpClient.put(eventUrl(event.id), {data: event});
+    const response = await httpClient[httpMethod](url, {data});
 
     return [response.data.data, null];
   } catch (error) {
@@ -27,25 +34,7 @@ const update = async event => {
 
     throw error;
   }
-};
-
-const create = async event => {
-  try {
-    const response = await httpClient.post(eventsUrl, {data: event});
-
-    return [response.data.data, null];
-  } catch (error) {
-    if (error.response) {
-      return [null, error.response.data.errors];
-    }
-
-    throw error;
-  }
-};
-
-const destroy = eventId => {
-  httpClient.delete(eventUrl(eventId));
-};
+}
 
 export default {
   index,
