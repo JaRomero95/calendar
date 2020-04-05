@@ -9,7 +9,6 @@ const Footer = styled.div`
 const AppFooter = () => (
   <Footer>
     <span>Juan Antonio Romero Molero</span>
-    <span>Factorial Calendar</span>
   </Footer>
 );
 
