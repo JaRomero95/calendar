@@ -30,4 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    required: 'is required'
+  errors:
+    messages:
+      ends_before_it_has_started: 'end date must be greater than start date'

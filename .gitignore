@@ -23,3 +23,9 @@
 
 # Ignore environment variables
 .env
+
+# Ignore frontend files
+/public
+!/public/robots.txt
+
+coverage/
