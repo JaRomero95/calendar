@@ -1,0 +1,9 @@
+// Bootstrap
+$primary: #7C73E6;
+
+// React-big-calendar
+$event-bg: $primary !default;
+$event-border: darken($primary, 10%) !default;
+$event-outline: darken($primary, 20%) !default;
+$today-highlight-bg: lighten($primary, 29%) !default;
+$current-time-color: darken($primary, 35%) !default;

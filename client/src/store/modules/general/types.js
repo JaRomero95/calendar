@@ -1,0 +1,7 @@
+const SET_LOADING = 'SET_LOADING';
+const SET_TOAST = 'SET_TOAST';
+
+export {
+  SET_LOADING,
+  SET_TOAST,
+};
